@@ -184,6 +184,7 @@ class ExpressionCalculatorTest {
             calculator.evaluate(case.expression)
         }
         Thread.sleep(1000)
+        Thread.dumpStack()
         val result = calculator.evaluate(case.expression)
         val threadBean: ThreadMXBean = ManagementFactory.getThreadMXBean()
         val threadCount: Int = threadBean.threadCount
