@@ -62,6 +62,21 @@ class ExpressionCalculatorTest {
                     result = "5",
                     description = "pass single num"
                 ),
+                ValidEvaluationCase(
+                    expression = "2 + 4 * 5",
+                    result = "22",
+                    description = "multiplication has higher priority than sum"
+                ),
+                ValidEvaluationCase(
+                    expression = "(2 + 4) * 5",
+                    result = "30",
+                    description = "operation with parenthesis"
+                ),
+                ValidEvaluationCase(
+                    expression = "(2 + (4 - 2)) * 5",
+                    result = "20",
+                    description = "nested operation with parenthesis"
+                ),
             )
         }
     }
