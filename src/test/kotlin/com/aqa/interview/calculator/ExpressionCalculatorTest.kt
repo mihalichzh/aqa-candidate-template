@@ -2,7 +2,6 @@ package com.aqa.interview.calculator
 
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
-import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ExpressionCalculatorTest {
@@ -17,7 +16,47 @@ class ExpressionCalculatorTest {
                     expression = "1 + 2",
                     result = "3",
                     description = "sum of positive ints"
-                )
+                ),
+                ValidEvaluationCase(
+                    expression = "-2 - 2",
+                    result = "-4",
+                    description = "subtract of negative ints"
+                ),
+                ValidEvaluationCase(
+                    expression = "23 * 0",
+                    result = "0",
+                    description = "multiply ints by zero"
+                ),
+                ValidEvaluationCase(
+                    expression = "1.2 + 2.3",
+                    result = "3.5",
+                    description = "sum of floats"
+                ),
+                ValidEvaluationCase(
+                    expression = "1.2 + 2.3",
+                    result = "3.5",
+                    description = "sum of floats"
+                ),
+                ValidEvaluationCase(
+                    expression = "0 / 2",
+                    result = "0",
+                    description = "divide 0 by positive int"
+                ),
+                ValidEvaluationCase(
+                    expression = "5.0 / 2",
+                    result = "2.5",
+                    description = "divide 0 by positive int"
+                ),
+                ValidEvaluationCase(
+                    expression = "+2 + 3",
+                    result = "5",
+                    description = "use explicit sign (+)"
+                ),
+                ValidEvaluationCase(
+                    expression = "5",
+                    result = "5",
+                    description = "pass single num"
+                ),
             )
         }
     }
