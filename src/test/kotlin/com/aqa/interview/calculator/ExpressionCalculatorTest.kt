@@ -1,5 +1,6 @@
 package com.aqa.interview.calculator
 
+import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import kotlin.test.assertEquals
@@ -84,17 +85,40 @@ class ExpressionCalculatorTest {
                 ),
             )
         }
+
+        @JvmStatic
+        fun invalidEvaluationCases(): List<InvalidEvaluationCase> {
+            return listOf(
+                InvalidEvaluationCase(
+                    expression = "-",
+                    description = "sign without number"
+                ),
+            )
+        }
     }
 
     @MethodSource("validEvaluationCases")
     @ParameterizedTest
-    fun `addition of two integers`(case: ValidEvaluationCase) {
+    fun `evaluate valid expression`(case: ValidEvaluationCase) {
         assertEquals(case.result, calculator.evaluate(case.expression))
+    }
+
+    @MethodSource("invalidEvaluationCases")
+    @ParameterizedTest
+    fun `invalid operation`(case: InvalidEvaluationCase) {
+        assertThrows<RuntimeException> {
+            calculator.evaluate(case.expression)
+        }
     }
 
     data class ValidEvaluationCase(
         val expression: String,
         val result: String,
+        val description: String,
+    )
+
+    data class InvalidEvaluationCase(
+        val expression: String,
         val description: String,
     )
 }

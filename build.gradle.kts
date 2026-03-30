@@ -16,5 +16,10 @@ kotlin {
 }
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
+        testLogging.showStandardStreams = true
+    }
 }
