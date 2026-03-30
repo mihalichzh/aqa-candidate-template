@@ -174,15 +174,13 @@ class ExpressionCalculatorTest {
     @MethodSource("validEvaluationCases")
     @ParameterizedTest
     fun `evaluate bug expression`() {
-        Thread.dumpStack()
-
         val case = ValidEvaluationCase(
             expression = "7777777777 / 12356",
             result = (7777777777 / 12356).toString(),
             description = "user reported bug '7777777777 / 12356'",
         )
 
-        thread {
+        thread(isDaemon = true) {
             calculator.evaluate(case.expression)
         }
         Thread.sleep(1000)
