@@ -1,9 +1,13 @@
 package com.aqa.interview.calculator
 
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
+import java.lang.management.ManagementFactory
+import java.lang.management.ThreadMXBean
 import kotlin.test.assertEquals
+
 
 class ExpressionCalculatorTest {
 
@@ -159,12 +163,32 @@ class ExpressionCalculatorTest {
         }
     }
 
+    @Disabled
     @MethodSource("validEvaluationCases")
     @ParameterizedTest
     fun `evaluate valid expression`(case: ValidEvaluationCase) {
         assertEquals(case.result, calculator.evaluate(case.expression))
     }
 
+    @MethodSource("validEvaluationCases")
+    @ParameterizedTest
+    fun `evaluate bug expression`() {
+        Thread.dumpStack()
+
+        val case = ValidEvaluationCase(
+            expression = "7777777777 / 12356",
+            result = (7777777777 / 12356).toString(),
+            description = "user reported bug '7777777777 / 12356'",
+        )
+        val result = calculator.evaluate(case.expression)
+        val threadBean: ThreadMXBean = ManagementFactory.getThreadMXBean()
+        val threadCount: Int = threadBean.threadCount
+        val deadlockedThreads: LongArray? = threadBean.findDeadlockedThreads()
+        println(deadlockedThreads.contentToString())
+        assertEquals(case.result, calculator.evaluate(case.expression))
+    }
+
+    @Disabled
     @MethodSource("invalidEvaluationCases")
     @ParameterizedTest
     fun `invalid operation`(case: InvalidEvaluationCase) {
