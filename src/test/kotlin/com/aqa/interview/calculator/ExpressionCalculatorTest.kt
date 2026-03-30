@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import java.lang.management.ManagementFactory
 import java.lang.management.ThreadMXBean
+import kotlin.concurrent.thread
 import kotlin.test.assertEquals
 
 
@@ -180,6 +181,10 @@ class ExpressionCalculatorTest {
             result = (7777777777 / 12356).toString(),
             description = "user reported bug '7777777777 / 12356'",
         )
+
+        thread {
+            calculator.evaluate(case.expression)
+        }
         val result = calculator.evaluate(case.expression)
         val threadBean: ThreadMXBean = ManagementFactory.getThreadMXBean()
         val threadCount: Int = threadBean.threadCount
