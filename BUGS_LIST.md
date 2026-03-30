@@ -5,3 +5,7 @@
     Expected: Handled properly, 5 is returned.
     Actual: RuntimeExpression is thrown.
 ```
+2. Non-descritive error message for case with only-sign expression passed, e.g. '-':
+```
+org.opentest4j.AssertionFailedError: expected: <Unexpected token ''.> but was: <Invalid operation>
+```
