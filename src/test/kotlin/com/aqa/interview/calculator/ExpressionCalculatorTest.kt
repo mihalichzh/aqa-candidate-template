@@ -112,6 +112,11 @@ class ExpressionCalculatorTest {
                     expression = "8888888888 + 2315",
                     result = (8888888888 + 2315).toString(),
                     description = "user reported bug '8888888888 + 2315'",
+                ),
+                ValidEvaluationCase(
+                    expression = "7777777777 / 12356",
+                    result = (7777777777 / 12356).toString(),
+                    description = "user reported bug '7777777777 / 12356'",
                 )
             )
         }
