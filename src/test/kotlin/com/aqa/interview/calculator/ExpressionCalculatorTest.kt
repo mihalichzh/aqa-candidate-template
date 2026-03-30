@@ -83,6 +83,11 @@ class ExpressionCalculatorTest {
                     result = "99",
                     description = "double negative number"
                 ),
+                ValidEvaluationCase(
+                    expression = "9999999999 + 1",
+                    result = (9999999999 + 1).toString(),
+                    description = "user reported bug '9999999999 + 1'",
+                )
             )
         }
 
@@ -91,6 +96,7 @@ class ExpressionCalculatorTest {
             return listOf(
                 InvalidEvaluationCase(
                     expression = "-",
+                    exceptionMessage = "Invalid expression",
                     description = "sign without number"
                 ),
             )
@@ -110,7 +116,7 @@ class ExpressionCalculatorTest {
             calculator.evaluate(case.expression)
         }
 
-        assertEquals(actualException.message, "Invalid operation")
+        assertEquals(actualException.message, case.exceptionMessage)
     }
 
     data class ValidEvaluationCase(
@@ -121,6 +127,7 @@ class ExpressionCalculatorTest {
 
     data class InvalidEvaluationCase(
         val expression: String,
+        val exceptionMessage: String,
         val description: String,
     )
 }
