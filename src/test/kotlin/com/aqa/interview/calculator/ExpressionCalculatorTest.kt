@@ -53,6 +53,11 @@ class ExpressionCalculatorTest {
                     description = "use explicit sign (+)"
                 ),
                 ValidEvaluationCase(
+                    expression = "-2 + 3",
+                    result = "1",
+                    description = "use explicit sign (-)"
+                ),
+                ValidEvaluationCase(
                     expression = "5",
                     result = "5",
                     description = "pass single num"
