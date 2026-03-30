@@ -83,11 +83,11 @@ class ExpressionCalculatorTest {
                     result = "99",
                     description = "double negative number"
                 ),
-                /*ValidEvaluationCase(
+                ValidEvaluationCase(
                     expression = "9999999999 + 1",
                     result = (9999999999 + 1).toString(),
                     description = "user reported bug '9999999999 + 1'",
-                )*/
+                ),
                 ValidEvaluationCase(
                     expression = "9999999998 + 1",
                     result = (9999999998 + 1).toString(),
