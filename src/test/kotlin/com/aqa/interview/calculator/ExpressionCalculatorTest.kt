@@ -102,6 +102,16 @@ class ExpressionCalculatorTest {
                     expression = "8888888888 + 2314",
                     result = (8888888888 + 2314).toString(),
                     description = "user reported bug '8888888888 + 2314'",
+                ),
+                ValidEvaluationCase(
+                    expression = "8888888888 + 2313",
+                    result = (8888888888 + 2313).toString(),
+                    description = "user reported bug '8888888888 + 2313'",
+                ),
+                ValidEvaluationCase(
+                    expression = "8888888888 + 2315",
+                    result = (8888888888 + 2315).toString(),
+                    description = "user reported bug '8888888888 + 2315'",
                 )
             )
         }
