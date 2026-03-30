@@ -77,6 +77,11 @@ class ExpressionCalculatorTest {
                     result = "20",
                     description = "nested operation with parenthesis"
                 ),
+                ValidEvaluationCase(
+                    expression = "--99",
+                    result = "99",
+                    description = "double negative number"
+                ),
             )
         }
     }
