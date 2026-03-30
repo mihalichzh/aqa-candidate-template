@@ -106,9 +106,11 @@ class ExpressionCalculatorTest {
     @MethodSource("invalidEvaluationCases")
     @ParameterizedTest
     fun `invalid operation`(case: InvalidEvaluationCase) {
-        assertThrows<RuntimeException> {
+        val actualException = assertThrows<RuntimeException> {
             calculator.evaluate(case.expression)
         }
+
+        assertEquals(actualException.message, "Invalid operation")
     }
 
     data class ValidEvaluationCase(
