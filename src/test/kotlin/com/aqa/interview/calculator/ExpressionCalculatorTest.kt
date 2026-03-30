@@ -122,6 +122,11 @@ class ExpressionCalculatorTest {
                     expression = "2 / 2",
                     result = (2 / 2).toString(),
                     description = "user reported bug '2 / 2'",
+                ),
+                ValidEvaluationCase(
+                    expression = "3 / 2",
+                    result = (3 / 2).toString(),
+                    description = "user reported bug '3 / 2'",
                 )
             )
         }
