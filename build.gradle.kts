@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 plugins {
     kotlin("jvm") version "2.3.20"
 }
@@ -21,5 +23,7 @@ tasks.test {
             events("passed", "skipped", "failed")
         }
         testLogging.showStandardStreams = true
+        testLogging.showExceptions = true
+        testLogging.exceptionFormat = TestExceptionFormat.FULL
     }
 }
